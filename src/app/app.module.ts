@@ -10,6 +10,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule} from '@angular/fire/compat/auth';
 import { firebaseConfig } from 'src/environments/environment';
 import { provideHttpClient } from '@angular/common/http';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,5 +24,7 @@ import { provideHttpClient } from '@angular/common/http';
     ],
   providers: [provideHttpClient(),{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy,  }],
   bootstrap: [AppComponent],
+
+
 })
 export class AppModule {}

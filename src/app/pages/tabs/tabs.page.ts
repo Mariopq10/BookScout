@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tabs.page.scss'],
 })
 export class TabsPage {
-
-  constructor() { }
+  nombre :string | null
+  photo :string | null
+  constructor() {
+    this.nombre = localStorage.getItem('displayname');
+    this.photo = localStorage.getItem('photo')
+  }
 
 }

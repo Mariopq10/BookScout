@@ -11,8 +11,9 @@ export class GoogleBooksService {
 
   constructor(private http: HttpClient) { }
 
-  getNewReleases(query: string = 'new releases', maxResults: number = 10): Observable<any> {
-    const url = `${this.apiUrl}?q=${query}&maxResults=${maxResults}`;
+  getNewReleases(maxResults: number = 10): Observable<any> {
+    const query = 'subject:fiction'; // Puedes cambiar esto a otro término o categoría relevante
+    const url = `${this.apiUrl}?q=${query}&orderBy=newest&maxResults=${maxResults}`;
     return this.http.get<any>(url);
   }
 }

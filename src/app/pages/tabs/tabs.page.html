@@ -1,5 +1,15 @@
-<ion-tabs>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title slot="start">{{ nombre }}</ion-title>
+    <ion-avatar slot="end">
+    <img alt="Foto de Perfil" [src]="photo"/>
+  </ion-avatar>
+  </ion-toolbar>
+</ion-header>
 
+
+
+<ion-tabs>
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="home" >
       <ion-icon aria-hidden="true" name="book-outline"></ion-icon>
@@ -20,5 +30,4 @@
       <ion-label>Ajustes</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
-
 </ion-tabs>
