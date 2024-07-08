@@ -5,5 +5,6 @@ export interface GoogleUser {
   photoURL: string | null;
   emailVerified: boolean;
   idToken: string;
-  accessToken: string;
+  refreshToken:string;
+  oauthAccessToken:string|null;
 }

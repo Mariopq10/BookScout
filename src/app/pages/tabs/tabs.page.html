@@ -1,11 +1,15 @@
-<ion-header [translucent]="true">
+
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title slot="start">{{ nombre }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="m1"></ion-menu-button>
+    </ion-buttons>
+    <ion-title >{{ nombre }}</ion-title>
     <ion-avatar slot="end">
     <img alt="Foto de Perfil" [src]="photo"/>
   </ion-avatar>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 
 
@@ -23,7 +27,7 @@
 
     <ion-tab-button tab="favoritos">
       <ion-icon aria-hidden="true" name="bookmarks-outline"></ion-icon>
-      <ion-label>Favoritos</ion-label>
+      <ion-label>Biblioteca</ion-label>
     </ion-tab-button>
     <ion-tab-button tab="ajustes">
       <ion-icon aria-hidden="true" name="person-circle-outline"></ion-icon>

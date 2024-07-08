@@ -4,9 +4,11 @@ ion-content {
   justify-content: center;
   align-items: center;
   height: 100%;
+
 }
-ion-grid{
-  margin-top: 50px;
+ion-title{
+  // font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
 ion-card{
@@ -22,4 +24,8 @@ p{
   color: black;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
+}
+
+ion-avatar{
+  padding: 0.4em;
 }

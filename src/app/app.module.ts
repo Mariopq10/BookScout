@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -9,11 +9,10 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule} from '@angular/fire/compat/auth';
 import { firebaseConfig } from 'src/environments/environment';
-import { provideHttpClient } from '@angular/common/http';
-import { HeaderComponent } from './components/header/header.component';
+import {  provideHttpClient } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ],
   imports: [BrowserModule,
      IonicModule.forRoot(),
       AppRoutingModule,
@@ -21,9 +20,11 @@ import { HeaderComponent } from './components/header/header.component';
       AngularFireAuthModule,
 
 
+
     ],
   providers: [provideHttpClient(),{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy,  }],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
 
 })

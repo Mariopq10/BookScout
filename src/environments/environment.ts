@@ -15,3 +15,7 @@ export const firebaseConfig = {
   appId: "1:162474638690:web:cd30aa23286a366776c03b",
   measurementId: "G-N6FDW7BZP9"
 };
+
+export const auth2 ={
+ client_id: "https://accounts.google.com/o/oauth2/auth?-client_id=162474638690-rt7rtghp7cebd3ludbme25e2odba0hml.apps.googleusercontent.com&redirect_uri=http://localhost&response_type=code&scope=https://www.googleapis.com/auth/books&access_type=offline"
+}

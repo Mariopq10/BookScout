@@ -1,0 +1,41 @@
+ion-menu {
+  ion-header {
+    --background: #97a18994; /* Twitter blue color */
+    color: white;
+  }
+
+  ion-toolbar {
+    --background: #97a18994;
+    --color: white;
+  }
+
+  ion-content {
+    --background: #97a18994;
+
+  }
+
+
+  ion-list {
+     margin-top: 15px;
+     padding: 0;
+    ion-item {
+      --background: #97a18994;
+      --color: rgb(255, 255, 255);
+      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+
+      ion-avatar {
+        margin-right: 10px;
+      }
+
+      ion-label {
+        h2 {
+          font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+          font-size: 1.2em;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

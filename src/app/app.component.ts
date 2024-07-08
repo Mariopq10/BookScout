@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MenuController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,21 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  userName!: string;
+  userPhoto!: string;
+  menuType: string = 'reveal';
+  constructor(private menu: MenuController, private navCtrl: NavController) {}
+
+  closeMenuAndNavigate(url: string) {
+    this.menu.close(); // Cierra el menú lateral
+    this.navCtrl.navigateRoot(url); // Navega a la ruta especificada
+  }
+  ngOnInit() {
+    this.loadUserData();
+  }
+
+  loadUserData() {
+    this.userName = localStorage.getItem('displayname') || 'Usuario';
+    this.userPhoto = localStorage.getItem('photo') || 'assets/default-avatar.png';
+  }
 }

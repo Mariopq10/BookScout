@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title *ngIf="libro">{{ libro.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card *ngIf="libro">
+    <ion-img [src]="libro.imageLinks.thumbnail" alt="Portada del libro"></ion-img>
+    <ion-card-content>
+      <ion-card-title>{{ libro.subtitle }}</ion-card-title>
+      <ion-card-subtitle>{{ libro.authors.join(', ') }}</ion-card-subtitle>
+      <ion-card-subtitle>{{ libro.publishedDate }}</ion-card-subtitle>
+      <ion-card-subtitle>{{ libro.publisher }}</ion-card-subtitle>
+      <p [innerHTML]="libro.description"></p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>ISBN-10:</ion-label>
+      <ion-note slot="end">{{ libro.industryIdentifiers }}</ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Categorías:</ion-label>
+      <ion-note slot="end">{{ libro.categories.join(', ') }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Rating Promedio:</ion-label>
+      <ion-note slot="end">{{ libro.averageRating }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Idioma:</ion-label>
+      <ion-note slot="end">{{ libro.language }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Recuento de Calificaciones:</ion-label>
+      <ion-note slot="end">{{ libro.ratingsCount }}</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>

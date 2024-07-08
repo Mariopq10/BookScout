@@ -36,6 +36,10 @@ const routes: Routes = [
     path: 'favoritos',
     loadChildren: () => import('./pages/favoritos/favoritos.module').then( m => m.FavoritosPageModule)
   },
+  {
+    path: 'info-libro/:id',
+    loadChildren: () => import('./pages/info-libro/info-libro.module').then(m => m.InfoLibroPageModule)
+  },
 ];
 @NgModule({
   imports: [

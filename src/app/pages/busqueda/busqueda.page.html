@@ -1,13 +1,27 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>busqueda</ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Búsqueda de Libros
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">busqueda</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="searchBooks()" placeholder="Buscar libro"></ion-searchbar>
+
+  <ion-list  *ngIf="libros.length > 0">
+    <ion-item *ngFor="let libro of libros.slice(0, 10)" (click)="verInfoLibro(libro.id)">
+      <ion-thumbnail slot="start">
+        <ion-img [src]="libro.volumeInfo.imageLinks?.smallThumbnail"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ libro.volumeInfo.title }}</h2>
+        <p>{{ libro.volumeInfo.authors?.join(', ') }}</p>
+        <p>{{ libro.volumeInfo.publishedDate }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-text *ngIf="libros.length === 0 && searchQuery">
+    No se encontraron resultados para "{{ searchQuery }}"
+  </ion-text>
 </ion-content>

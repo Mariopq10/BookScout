@@ -26,11 +26,9 @@ export class LoginPage {
     try{
       const googleUser = await this.authService.googleLogin();
     if (googleUser) {
-      localStorage.setItem('email' ,googleUser.email!)
-      localStorage.setItem('displayname' ,googleUser.displayName!)
       localStorage.setItem('displayname' ,googleUser.displayName!)
       localStorage.setItem('photo' ,googleUser.photoURL!)
-      localStorage.setItem('token' ,googleUser.idToken!)
+      localStorage.setItem('token' ,googleUser.oauthAccessToken!)
 
 
       this.router.navigate(['/tabs']);
