@@ -1,5 +1,5 @@
-<ion-header>
-  <ion-toolbar color="primary">
+<ion-header [translucent]="true">
+  <ion-toolbar >
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/" [defaultHref]="previousUrl ?? '/'" text="Atrás"></ion-back-button>
     </ion-buttons>
@@ -29,7 +29,7 @@
     </ion-card-content>
 
     <ion-list lines="none">
-      <ion-item>
+      <ion-item class="transparent" >
         <ion-label>ISBN-10:</ion-label>
         <ion-note slot="end">{{ libro.volumeInfo.industryIdentifiers[0].identifier }}</ion-note>
       </ion-item>
@@ -55,7 +55,7 @@
       </ion-item>
       <ion-item>
         <ion-label>Recuento de Calificaciones:</ion-label>
-        <ion-note slot="end">{{ libro.volumeInfo.ratingsCount }}</ion-note>
+        <ion-note slot="end">{{ libro.volumeInfo.ratingsCount ? libro.volumeInfo.ratingsCount : 'No hay datos'  }}</ion-note>
       </ion-item>
     </ion-list>
   </ion-card>
@@ -69,23 +69,22 @@
     <p>Cargando...</p>
   </div>
 
-  <ion-card *ngIf="librosDelMismoAutor && librosDelMismoAutor.length > 0">
+  <ion-card *ngIf="librosDelMismoAutor && librosDelMismoAutor.length > 0" class="more-books">
     <ion-card-header>
       <ion-card-title>Libros del mismo autor</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <swiper [slidesPerView]="1" [spaceBetween]="10">
-        <ng-template swiperSlide *ngFor="let libro of librosDelMismoAutor">
-          <ion-card>
+      <swiper-container  pagination="true">
+        <swiper-slide class="swiperSlide" *ngFor="let libro of librosDelMismoAutor">
+          <ion-card class="mini-book" (click)="verInfoLibro(libro.id)">
             <ion-img [src]="libro.volumeInfo.imageLinks?.thumbnail" alt="Portada del libro"></ion-img>
             <ion-card-content>
               <ion-card-title>{{ libro.volumeInfo.title }}</ion-card-title>
               <ion-card-subtitle>{{ libro.volumeInfo.authors?.join(', ') }}</ion-card-subtitle>
-              <p>{{ libro.volumeInfo.description }}</p>
             </ion-card-content>
           </ion-card>
-        </ng-template>
-      </swiper>
+        </swiper-slide>
+      </swiper-container>
     </ion-card-content>
   </ion-card>
 

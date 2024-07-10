@@ -10,6 +10,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule} from '@angular/fire/compat/auth';
 import { firebaseConfig } from 'src/environments/environment';
 import {  provideHttpClient } from '@angular/common/http';
+import Swiper from 'swiper';
 
 @NgModule({
   declarations: [AppComponent, ],
@@ -18,11 +19,8 @@ import {  provideHttpClient } from '@angular/common/http';
       AppRoutingModule,
       AngularFireModule.initializeApp(firebaseConfig),
       AngularFireAuthModule,
-
-
-
     ],
-  providers: [provideHttpClient(),{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy,  }],
+  providers: [provideHttpClient(),{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy,  },Swiper],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 

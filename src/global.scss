@@ -36,8 +36,14 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
 
-
-
+body {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+* {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 :root {
-  --custom-ion-item-background: #ffffff00; // Color de fondo personalizado para los ion-item
+  ion-item {
+    --ion-item-background: rgba(0, 0, 0, 0.1);
+  }
 }
