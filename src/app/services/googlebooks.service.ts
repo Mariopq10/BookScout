@@ -91,16 +91,26 @@ export class GoogleBooksService {
     }
 
 
-  async obtenerLibroPorId(libroId: string) {
-    const url = `${this.apiUrl}/${libroId}`;
-    try {
-      const response = await this.http.get<any>(url).toPromise();
-      return response;
-    } catch (error) {
-      throw error;
+    obtenerLibroPorId(libroId: string): Observable<any> {
+      const url = `${this.apiUrl}/${libroId}`;
+      return this.http.get<any>(url).pipe(
+        catchError(error => {
+          console.error('Error al obtener el libro:', error);
+          return of({ error: true, message: error.message });
+        })
+      );
     }
-  }
 
+    // Obtenemos los libros por autor, para buscar elementos relacionados dentro de un info-libro
+    obtenerLibrosPorAutor(autor: string): Observable<any> {
+      const url = `${this.apiUrl}?q=inauthor:${autor}&maxResults=10`; // Busca hasta 5 libros del mismo autor
+      return this.http.get<any>(url).pipe(
+        catchError(error => {
+          console.error('Error al obtener libros del mismo autor:', error);
+          throw error;
+        })
+      );
+    }
 
 
 

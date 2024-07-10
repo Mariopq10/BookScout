@@ -1,42 +1,92 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title *ngIf="libro">{{ libro.title }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" [defaultHref]="previousUrl ?? '/'" text="Atrás"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="libro">{{ libro.volumeInfo.title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-card *ngIf="libro">
-    <ion-img [src]="libro.imageLinks.thumbnail" alt="Portada del libro"></ion-img>
+<ion-content>
+  <ion-card *ngIf="libro && !libro.error" class="book-card">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+          <ion-img [src]="libro.volumeInfo.imageLinks?.thumbnail" alt="Portada del libro"></ion-img>
+        </ion-col>
+        <ion-col size="9">
+          <ion-card-content>
+            <ion-card-title>{{ libro.volumeInfo.subtitle }}</ion-card-title>
+            <ion-card-subtitle>{{ libro.volumeInfo.authors?.join(', ') }}</ion-card-subtitle>
+            <ion-card-subtitle>Publicado por {{ libro.volumeInfo.publisher }}</ion-card-subtitle>
+          </ion-card-content>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
     <ion-card-content>
-      <ion-card-title>{{ libro.subtitle }}</ion-card-title>
-      <ion-card-subtitle>{{ libro.authors.join(', ') }}</ion-card-subtitle>
-      <ion-card-subtitle>{{ libro.publishedDate }}</ion-card-subtitle>
-      <ion-card-subtitle>{{ libro.publisher }}</ion-card-subtitle>
-      <p [innerHTML]="libro.description"></p>
+      <p [innerHTML]="libro.volumeInfo.description"></p>
+    </ion-card-content>
+
+    <ion-list lines="none">
+      <ion-item>
+        <ion-label>ISBN-10:</ion-label>
+        <ion-note slot="end">{{ libro.volumeInfo.industryIdentifiers[0].identifier }}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>ISBN-13:</ion-label>
+        <ion-note slot="end">{{ libro.volumeInfo.industryIdentifiers[1].identifier }}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Categorías:</ion-label>
+        <ion-note slot="end">{{ libro.volumeInfo.categories?.join(', ') }}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Número de Páginas:</ion-label>
+        <ion-note slot="end">{{ libro.volumeInfo.pageCount }}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Rating Promedio:</ion-label>
+        <ion-note slot="end">{{ libro.volumeInfo.averageRating ? libro.volumeInfo.averageRating : 'No disponible' }}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Idioma:</ion-label>
+        <ion-note slot="end">{{ libro.volumeInfo.language }}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Recuento de Calificaciones:</ion-label>
+        <ion-note slot="end">{{ libro.volumeInfo.ratingsCount }}</ion-note>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <div *ngIf="libro && libro.error" class="error-message">
+    <p>Error al cargar los datos del libro: {{ libro.message }}</p>
+  </div>
+
+  <div *ngIf="!libro" class="loading-message">
+    <ion-spinner></ion-spinner>
+    <p>Cargando...</p>
+  </div>
+
+  <ion-card *ngIf="librosDelMismoAutor && librosDelMismoAutor.length > 0">
+    <ion-card-header>
+      <ion-card-title>Libros del mismo autor</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <swiper [slidesPerView]="1" [spaceBetween]="10">
+        <ng-template swiperSlide *ngFor="let libro of librosDelMismoAutor">
+          <ion-card>
+            <ion-img [src]="libro.volumeInfo.imageLinks?.thumbnail" alt="Portada del libro"></ion-img>
+            <ion-card-content>
+              <ion-card-title>{{ libro.volumeInfo.title }}</ion-card-title>
+              <ion-card-subtitle>{{ libro.volumeInfo.authors?.join(', ') }}</ion-card-subtitle>
+              <p>{{ libro.volumeInfo.description }}</p>
+            </ion-card-content>
+          </ion-card>
+        </ng-template>
+      </swiper>
     </ion-card-content>
   </ion-card>
 
-  <ion-list>
-    <ion-item>
-      <ion-label>ISBN-10:</ion-label>
-      <ion-note slot="end">{{ libro.industryIdentifiers }}</ion-note>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Categorías:</ion-label>
-      <ion-note slot="end">{{ libro.categories.join(', ') }}</ion-note>
-    </ion-item>
-    <ion-item>
-      <ion-label>Rating Promedio:</ion-label>
-      <ion-note slot="end">{{ libro.averageRating }}</ion-note>
-    </ion-item>
-    <ion-item>
-      <ion-label>Idioma:</ion-label>
-      <ion-note slot="end">{{ libro.language }}</ion-note>
-    </ion-item>
-    <ion-item>
-      <ion-label>Recuento de Calificaciones:</ion-label>
-      <ion-note slot="end">{{ libro.ratingsCount }}</ion-note>
-    </ion-item>
-  </ion-list>
 </ion-content>

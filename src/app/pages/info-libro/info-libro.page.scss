@@ -1,0 +1,55 @@
+/* info-libro.page.scss */
+ion-content {
+  --background: url('../../../assets/register.jpeg') no-repeat center center / cover;
+
+  .book-card {
+    background-color: #97a18994; /* Fondo del card */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra del card */
+    border-radius: 8px; /* Borde redondeado */
+    display: flex; /* Utilizar flexbox para alinear elementos */
+    flex-direction: column; /* Columna para apilar elementos verticalmente */
+
+    ion-grid {
+      margin-bottom: 16px; /* Espaciado inferior entre la imagen y el contenido */
+
+      ion-row {
+        align-items: center; /* Centrar verticalmente los elementos de la fila */
+      }
+    }
+
+    ion-img {
+      max-height: 100px; /* Altura máxima de la imagen */
+      object-fit: contain; /* Ajuste de la imagen */
+      border-radius: 8px; /* Borde redondeado */
+    }
+
+    ion-card-content {
+      padding: 16px; /* Espacio interno del contenido */
+
+      ion-card-title {
+        font-size: 1.5rem; /* Tamaño de fuente del título */
+        font-weight: bold; /* Negrita */
+      }
+
+      ion-card-subtitle {
+        color: #666666; /* Color del subtítulo */
+        font-size: 1rem; /* Tamaño de fuente del subtítulo */
+      }
+
+      p {
+        margin-top: 8px; /* Margen superior del párrafo */
+        color: #333333; /* Color del texto */
+      }
+    }
+  }
+
+  .error-message, .loading-message {
+    display: flex; /* Utilizar flexbox para centrar contenido */
+    flex-direction: column; /* Columnas para apilar elementos verticalmente */
+    align-items: center; /* Centrar elementos horizontalmente */
+    justify-content: center; /* Centrar elementos verticalmente */
+    padding: 16px; /* Espaciado interno */
+    margin-top: 16px; /* Margen superior */
+    color: #ff5722; /* Color de texto para mensajes de error */
+  }
+}
