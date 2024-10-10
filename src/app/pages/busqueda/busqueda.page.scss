@@ -11,3 +11,27 @@ ion-content {
 //   --ion-background-color: rgba(255, 255, 255, 0.8) !important; /* Color de fondo translúcido */
 // }
 
+ion-toolbar{
+ background-color:#97a18994;
+}
+
+ion-header {
+  --background: #97a18994;
+  color: white;
+}
+
+ion-toolbar {
+  --background: #97a18994;
+  --color: white;
+}
+
+ion-content {
+  --background: #97a18994;
+
+}
+
+ion-item {
+  --background: #97a18948;
+  --color: rgb(255, 255, 255);
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

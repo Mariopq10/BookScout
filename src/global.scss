@@ -46,4 +46,10 @@ body {
   ion-item {
     --ion-item-background: rgba(0, 0, 0, 0.1);
   }
+
+  ion-back-button {
+    --color: #ffffff;       /* Cambiar color del texto del botón */
+ /* Cambiar el grosor de la fuente */
+  }
+
 }

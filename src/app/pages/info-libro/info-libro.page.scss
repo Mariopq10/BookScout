@@ -11,7 +11,9 @@ color: #1d1d1d;
     color: #272727;
   }
 }
-
+ion-toolbar {
+  --background: #97a18994;
+}
 ion-content {
   --background: url('../../../assets/register.jpeg') no-repeat center center / cover;
 
